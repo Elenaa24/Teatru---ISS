@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="domain">
+
+    <class name="Spot" table="Spots">
+        <id name="id" column="Id" type="int">
+            <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator"/>
+        </id>
+        <property name="row" column="Row" type="integer"/>
+        <property name="nr" column="Nr" type="integer"/>
+        <property name="status" column="Status" type="string"/>
+<!--        <many-to-one name="show" class="Show"-->
+<!--                     column="show_id" not-null="true"-->
+<!--                     cascade="all" />-->
+        <many-to-one name="show" cascade="all"></many-to-one>
+    </class>
+
+</hibernate-mapping>

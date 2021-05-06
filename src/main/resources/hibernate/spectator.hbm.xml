@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="domain">
+
+    <class name="Spectator" table="Spectators">
+        <id name="id" column="Id" type="int">
+            <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator"/>
+        </id>
+        <!--        <property name="date" type="timestamp" column="EVENT_DATE"/>-->
+        <!--        <property name="title"/>-->
+        <property name = "name" column = "Name" type = "string"/>
+        <property name = "username" column = "Username" type = "string"/>
+        <property name="password" column="Password" type="string"/>
+    </class>
+
+</hibernate-mapping>
