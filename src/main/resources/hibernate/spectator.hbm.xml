@@ -13,7 +13,7 @@
         <!--        <property name="date" type="timestamp" column="EVENT_DATE"/>-->
         <!--        <property name="title"/>-->
         <property name = "name" column = "Name" type = "string"/>
-        <property name = "username" column = "Username" type = "string"/>
+        <property name = "username" column = "Username" type = "string" unique="true"/>
         <property name="password" column="Password" type="string"/>
     </class>
 

@@ -12,7 +12,15 @@ public class Employee extends Entity<Integer>{
     }
 
     public Employee() {
+    }
 
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 
     public String getName() {

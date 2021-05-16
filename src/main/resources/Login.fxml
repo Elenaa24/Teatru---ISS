@@ -4,14 +4,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Login">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
-      <Button layoutX="270.0" layoutY="268.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="59.0" text="Login">
+      <Button layoutX="270.0" layoutY="268.0" mnemonicParsing="false" onMouseClicked="#loginPress" prefHeight="26.0" prefWidth="59.0" text="Login">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <TextField layoutX="226.0" layoutY="148.0" promptText="username" />
-      <TextField accessibleRole="PASSWORD_FIELD" layoutX="228.0" layoutY="200.0" promptText="password" />
+      <TextField fx:id="username" layoutX="226.0" layoutY="148.0" promptText="username" />
+      <TextField fx:id="password" accessibleRole="PASSWORD_FIELD" layoutX="228.0" layoutY="200.0" promptText="password" />
    </children>
 </AnchorPane>

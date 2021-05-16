@@ -10,13 +10,12 @@
         <id name="id" column="Id" type="int">
             <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator"/>
         </id>
-        <property name = "nr_tickets" column = "Nr_tickets" type = "int"/>
         <many-to-one name="spectator" class="Spectator"
                      column="spectator_id" not-null="true"
-                     cascade="all" />
-        <many-to-one name="spot" class="Spot"
+                      />
+        <many-to-one name="seat" class="Seat"
                      column="spot_id" not-null="true"
-                     cascade="all" />
+                      />
 
     </class>
 

@@ -1,6 +1,6 @@
 package domain;
 
-public class Spot extends Entity<Integer> {
+public class Seat extends Entity<Integer> {
     private int row;
     private int nr;
     private String status;
@@ -8,14 +8,14 @@ public class Spot extends Entity<Integer> {
 
 
 
-    public Spot(int row, int nr, String status, Show show) {
+    public Seat(int row, int nr, String status, Show show) {
         this.row = row;
         this.nr = nr;
         this.status = status;
         this.show = show;
     }
 
-    public Spot() {
+    public Seat() {
 
     }
 
@@ -49,5 +49,15 @@ public class Spot extends Entity<Integer> {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Seat{" +
+                "row=" + row +
+                "nr=" + nr +
+                ", status='" + status + '\'' +
+                ", show=" + show +
+                '}';
     }
 }

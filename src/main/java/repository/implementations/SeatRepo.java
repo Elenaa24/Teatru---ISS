@@ -1,30 +1,30 @@
 package repository.implementations;
 
-import domain.Employee;
-import domain.Spectator;
+import domain.Seat;
+import domain.Show;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import repository.interfaces.JdbcUtils;
-import repository.interfaces.SpectatorRepository;
+import repository.interfaces.SeatRepository;
 
 import java.util.List;
 
-public class SpectatorRepo implements SpectatorRepository {
+public class SeatRepo implements SeatRepository {
     SessionFactory sessionFactory;
 
-    public SpectatorRepo() {
+    public SeatRepo() {
         sessionFactory = JdbcUtils.getSessionFactory();
     }
 
     @Override
-    public Spectator findOne(Integer integer) {
-        Spectator result = null;
+    public Seat findOne(Integer integer) {
+        Seat seat = null;
         try(Session session = sessionFactory.openSession()){
             Transaction transaction = null;
             try{
                 transaction = session.beginTransaction();
-                result = session.createQuery("from Spectator where id = ?1", Spectator.class)
+                seat = session.createQuery("from Seat where id = ?1", Seat.class)
                         .setParameter(1,integer).uniqueResult();
                 transaction.commit();
             } catch (Exception e) {
@@ -33,38 +33,31 @@ public class SpectatorRepo implements SpectatorRepository {
                     transaction.rollback();
             }
         }
-        return result;
+        return seat;
     }
 
     @Override
-    public Iterable<Spectator> findAll() {
+    public Iterable<Seat> findAll() {
         return null;
     }
 
     @Override
-    public Spectator save(Spectator entity) {
+    public Seat save(Seat entity) {
         return null;
     }
 
     @Override
-    public Spectator delete(Spectator spectator) {
+    public Seat delete(Seat seat) {
         return null;
     }
 
     @Override
-    public Spectator update(Spectator entity) {
-        return null;
-    }
-
-    @Override
-    public Spectator findByUsername(String username) {
-        Spectator result = null;
+    public Seat update(Seat entity) {
         try(Session session = sessionFactory.openSession()){
             Transaction transaction = null;
             try{
                 transaction = session.beginTransaction();
-                result = session.createQuery("from Spectator where username = ?1", Spectator.class)
-                        .setParameter(1,username).uniqueResult();
+                session.update(entity);
                 transaction.commit();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -72,6 +65,26 @@ public class SpectatorRepo implements SpectatorRepository {
                     transaction.rollback();
             }
         }
-        return result;
+        return entity;
+    }
+
+    @Override
+    public List<Seat> getFreeSeats(Show show) {
+        int id = show.getId();
+        List<Seat> seatList = null;
+        try(Session session = sessionFactory.openSession()) {
+            Transaction transaction = null;
+            try{
+                transaction = session.beginTransaction();
+                seatList = session.createQuery("from Seat where show = ?1", Seat.class)
+                        .setParameter(1,show).list();
+                transaction.commit();
+            } catch (Exception e) {
+                e.printStackTrace();
+                if(transaction !=null)
+                    transaction.rollback();
+            }
+        }
+        return seatList;
     }
 }

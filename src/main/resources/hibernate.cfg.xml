@@ -17,7 +17,7 @@
 <!--        <property name="format_sql">true</property>-->
         <mapping resource="hibernate/employee.hbm.xml"/>
         <mapping resource="hibernate/show.hbm.xml"/>
-        <mapping resource="hibernate/spot.hbm.xml"/>
+        <mapping resource="hibernate/seat.hbm.xml"/>
         <mapping resource="hibernate/reservation.hbm.xml"/>
         <mapping resource="hibernate/spectator.hbm.xml"/>
 

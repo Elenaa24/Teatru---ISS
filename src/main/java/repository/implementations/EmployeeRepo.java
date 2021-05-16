@@ -1,52 +1,41 @@
 package repository.implementations;
 
 import domain.Employee;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import repository.interfaces.EmployeeRepository;
+import repository.interfaces.JdbcUtils;
+
+import java.util.List;
 
 public class EmployeeRepo implements EmployeeRepository {
-//    static SessionFactory sessionFactory;
-//
-//    static void initialize() {
-//        final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-//                .configure()
-//                .build();
-//        try {
-//            sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
-//        }
-//        catch (Exception e) {
-//            System.out.println("catch");
-//            e.printStackTrace();
-//            StandardServiceRegistryBuilder.destroy(registry);
-//        }
-//    }
-//
-//    public EmployeeRepo() {
-//        initialize();
-//    }
 
-//    static void close() {
-//        if (sessionFactory != null) sessionFactory.close();
-//    }
+    SessionFactory sessionFactory;
+
+    public EmployeeRepo() {
+        sessionFactory = JdbcUtils.getSessionFactory();
+    }
 
     @Override
     public Employee findByUsername(String username) {
-//        System.out.println(username);
-//        List<Employee> result = null;
-//        try(Session session = sessionFactory.openSession()){
-//            Transaction transaction = null;
-//            try{
-//                transaction = session.beginTransaction();
-//                result = session.createQuery("from Employee where username = ?1", Employee.class)
-//                        .setParameter(1,username).list();
-//                transaction.commit();
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//                if(transaction !=null)
-//                    transaction.rollback();
-//            }
-//        }
-//        return result.get(0);
-        return null;
+        System.out.println(username);
+        Employee result = null;
+        try(Session session = sessionFactory.openSession()){
+            Transaction transaction = null;
+            try{
+                transaction = session.beginTransaction();
+                result = session.createQuery("from Employee where username = ?1", Employee.class)
+                        .setParameter(1,username).uniqueResult();
+                transaction.commit();
+            } catch (Exception e) {
+                e.printStackTrace();
+                if(transaction !=null)
+                    transaction.rollback();
+            }
+        }
+
+        return result;
     }
 
     @Override
@@ -65,7 +54,7 @@ public class EmployeeRepo implements EmployeeRepository {
     }
 
     @Override
-    public Employee delete(Integer integer) {
+    public Employee delete(Employee employee) {
         return null;
     }
 

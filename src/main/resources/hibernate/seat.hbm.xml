@@ -6,7 +6,7 @@
 
 <hibernate-mapping package="domain">
 
-    <class name="Spot" table="Spots">
+    <class name="domain.Seat" table="Seats">
         <id name="id" column="Id" type="int">
             <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator"/>
         </id>
@@ -16,7 +16,7 @@
 <!--        <many-to-one name="show" class="Show"-->
 <!--                     column="show_id" not-null="true"-->
 <!--                     cascade="all" />-->
-        <many-to-one name="show" cascade="all"></many-to-one>
+        <many-to-one name="show" cascade="all" fetch="select" ></many-to-one>
     </class>
 
 </hibernate-mapping>

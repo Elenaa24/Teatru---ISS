@@ -1,13 +1,11 @@
 package domain;
 
 public class Reservation extends Entity<Integer>{
-    private int nr_tickets;
-    private Spot spot;
+    private Seat seat;
     private Spectator spectator;
 
-    public Reservation(int nr_tickets, Spot spot, Spectator spectator) {
-        this.nr_tickets = nr_tickets;
-        this.spot = spot;
+    public Reservation( Seat seat, Spectator spectator) {
+        this.seat = seat;
         this.spectator = spectator;
     }
 
@@ -23,21 +21,20 @@ public class Reservation extends Entity<Integer>{
         this.spectator = spectator;
     }
 
-    public int getNr_tickets() {
-        return nr_tickets;
+
+    public Seat getSeat() {
+        return seat;
     }
 
-    public void setNr_tickets(int nr_tickets) {
-        this.nr_tickets = nr_tickets;
+    public void setSeat(Seat seat) {
+        this.seat = seat;
     }
 
-    public Spot getSpot() {
-        return spot;
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "seat=" + seat+
+                ", spectator=" + spectator +
+                '}';
     }
-
-    public void setSpot(Spot spot) {
-        this.spot = spot;
-    }
-
-
 }

@@ -3,25 +3,40 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainPageClientController">
   <tabs>
     <Tab text="Shows">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <ListView layoutX="158.0" layoutY="25.0" prefHeight="213.0" prefWidth="422.0" />
-                  <ListView layoutX="30.0" layoutY="25.0" prefHeight="323.0" prefWidth="112.0" />
-                  <Button layoutX="342.0" layoutY="303.0" mnemonicParsing="false" text="Book" />
-                  <Spinner layoutX="289.0" layoutY="255.0" />
+                  <Button layoutX="328.0" layoutY="408.0" mnemonicParsing="false" onMouseClicked="#book" text="Book" />
+                  <TableView fx:id="seatsTable" layoutX="14.0" layoutY="14.0" prefHeight="359.0" prefWidth="135.0">
+                    <columns>
+                      <TableColumn fx:id="rowColumn" prefWidth="69.19999694824219" text="Row" />
+                      <TableColumn fx:id="nrColumn" prefWidth="81.20001220703125" text="Nr" />
+                    </columns>
+                  </TableView>
+                  <TableView fx:id="showsTable" layoutX="177.0" layoutY="54.0" onMouseClicked="#selectedShow" prefHeight="319.0" prefWidth="522.0">
+                    <columns>
+                      <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
+                      <TableColumn fx:id="locationColumn" prefWidth="142.19998168945312" text="Location" />
+                        <TableColumn fx:id="dateColumn" prefWidth="109.00003051757812" text="Date and Time" />
+                        <TableColumn fx:id="descriptionColumn" prefWidth="175.5999755859375" text="Description" />
+                    </columns>
+                  </TableView>
                </children></AnchorPane>
       </content>
     </Tab>
-    <Tab text="My reservations">
+    <Tab onSelectionChanged="#openMyRes" text="My reservations">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="283.0" layoutY="266.0" mnemonicParsing="false" text="Cancel" />
-                  <ListView layoutX="70.0" layoutY="27.0" prefHeight="200.0" prefWidth="478.0" />
+                  <Button layoutX="324.0" layoutY="338.0" mnemonicParsing="false" onMouseClicked="#cancelReservation" text="Cancel" />
+                  <TableView fx:id="reservationsTable" layoutX="7.0" layoutY="44.0" prefHeight="255.0" prefWidth="689.0">
+                    <columns>
+                      <TableColumn fx:id="rowColumn1" prefWidth="683.9999876022339" text="Reservations" />
+                    </columns>
+                  </TableView>
                </children></AnchorPane>
       </content>
     </Tab>

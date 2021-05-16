@@ -42,4 +42,10 @@ public class Spectator extends Entity<Integer>{
         this.password = password;
     }
 
+    @Override
+    public String toString() {
+        return "Spectator{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }
