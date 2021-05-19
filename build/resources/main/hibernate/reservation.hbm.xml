@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="domain">
+
+    <class name="Reservation" table="Reservation">
+        <id name="id" column="Id" type="int">
+            <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator"/>
+        </id>
+        <many-to-one name="spectator" class="Spectator"
+                     column="spectator_id" not-null="true"
+                      />
+        <many-to-one name="seat" class="Seat"
+                     column="spot_id" not-null="true"
+                      />
+
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainPageEmployeeController">
+  <tabs>
+    <Tab text="Shows">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="700.0">
+               <children>
+                  <Button layoutX="445.0" layoutY="287.0" mnemonicParsing="false" onMouseClicked="#addButtonClicked" text="Add" />
+                  <TableView fx:id="showsTable" layoutX="24.0" layoutY="14.0" prefHeight="230.0" prefWidth="660.0">
+                    <columns>
+                      <TableColumn fx:id="nameColumn" prefWidth="123.20001602172852" text="Name" />
+                      <TableColumn fx:id="locationColumn" prefWidth="115.99998474121094" text="Location" />
+                        <TableColumn fx:id="dateColumn" prefWidth="143.39999389648438" text="Date And Time" />
+                        <TableColumn fx:id="descriptionColumn" prefWidth="263.4000244140625" text="Descriptiom" />
+                    </columns>
+                  </TableView>
+                  <Button layoutX="439.0" layoutY="378.0" mnemonicParsing="false" onAction="#deleteButtonClicked" text="Delete" />
+                  <TextField fx:id="namefield" layoutX="63.0" layoutY="259.0" promptText="Name" />
+                  <TextField fx:id="locationField" layoutX="63.0" layoutY="312.0" prefHeight="26.0" prefWidth="148.0" promptText="Location" />
+                  <TextField fx:id="descriptionField" layoutX="63.0" layoutY="365.0" prefHeight="26.0" prefWidth="147.0" promptText="Description" />
+                  <DatePicker fx:id="datafield" layoutX="63.0" layoutY="418.0" prefHeight="26.0" prefWidth="147.0" promptText="Date" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab text="Rezervations">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ListView fx:id="reservationList" layoutX="15.0" layoutY="51.0" prefHeight="399.0" prefWidth="647.0" />
+                  <Label layoutX="296.0" layoutY="14.0" text="Reservations">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+  </tabs>
+</TabPane>
